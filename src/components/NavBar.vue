@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<!-- As a link -->
-		<b-navbar variant="faded" type="dark" class="border-bottom">
+		<b-navbar variant="faded" type="light" class="border-bottom">
 			<b-navbar-brand href="/">
 				<img src="@/assets/logo.svg" alt="" height="30" />
-				News Aggregator
+				<span>News Aggregator</span> 
 			</b-navbar-brand>
 		</b-navbar>
 	</div>
