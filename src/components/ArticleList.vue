@@ -16,7 +16,6 @@
 					</template>
 					<b-list-group flush>
 						<b-list-group-item
-							variant="dark"
 							v-for="article in articleArray"
 							:key="article.link"
 							:href="article.link"
@@ -50,9 +49,21 @@ header {
 	font-size: 1.5rem;
 }
 
-.card-header {
-	padding-top: 0.1em;
-	padding-bottom: 0.1em;
-	font-size: 1.1em;
+.card{
+	border: none;
 }
+
+.card-header {
+	padding: 0.1em 0;
+	font-size: 1.3em;
+	background-color: #1a1c20;
+	color: white;
+}
+
+.list-group-item{
+	background-color: #1a1c20;
+	color: white;
+	border-bottom: 1px dotted rgba(46,46,55,0.8);
+}
+
 </style>

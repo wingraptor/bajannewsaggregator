@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+	<div class="home mb-4">
 		<div>
 			<ArticleList :articleListData="articleListData"/>
 		</div>
