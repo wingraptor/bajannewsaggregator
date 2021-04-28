@@ -25,5 +25,6 @@ export default {
 
 nav{
 	background-color: #141414;
+	padding:0;
 }
 </style>

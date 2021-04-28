@@ -9,6 +9,7 @@
 				:key="newsSite"
 			>
 				<b-card no-body>
+					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
 						<b-icon-newspaper variant="info"></b-icon-newspaper>
 						{{ newsSite }}
@@ -52,6 +53,6 @@ header {
 .card-header {
 	padding-top: 0.1em;
 	padding-bottom: 0.1em;
-	font-size: 1.5em;
+	font-size: 1.1em;
 }
 </style>
