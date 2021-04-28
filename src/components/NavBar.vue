@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<!-- As a link -->
-		<b-navbar variant="faded" type="light" class="border-bottom">
+		<b-navbar type="dark">
 			<b-navbar-brand href="/">
 				<img src="@/assets/logo.svg" alt="" height="30" />
-				<span>News Aggregator</span>
+				<span class="ml-2">News Aggregator</span>
 			</b-navbar-brand>
 		</b-navbar>
 	</div>
@@ -21,5 +21,9 @@ export default {
 <style scoped>
 .list-group-item {
 	flex: 1;
+}
+
+nav{
+	background-color: #141414;
 }
 </style>
