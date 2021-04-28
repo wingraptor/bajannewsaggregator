@@ -47,6 +47,7 @@ export default {
 <style scoped>
 header {
 	font-size: 1.5rem;
+	font-family: 'Lato', sans-serif;
 }
 
 .card{
@@ -62,8 +63,9 @@ header {
 
 .list-group-item{
 	background-color: #1a1c20;
-	color: white;
+	color: #b2b6b9;
 	border-bottom: 1px dotted rgba(46,46,55,0.8);
+	font-family: 'Hack', monospace;
 }
 
 </style>
