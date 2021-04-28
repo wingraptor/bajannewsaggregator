@@ -4,7 +4,7 @@
 		<b-navbar variant="faded" type="light" class="border-bottom">
 			<b-navbar-brand href="/">
 				<img src="@/assets/logo.svg" alt="" height="30" />
-				<span>News Aggregator</span> 
+				<span>News Aggregator</span>
 			</b-navbar-brand>
 		</b-navbar>
 	</div>
@@ -19,4 +19,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.list-group-item {
+	flex: 1;
+}
 </style>
