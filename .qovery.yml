@@ -1,0 +1,11 @@
+---
+application:
+  name: "front-end"
+  project: "bajan-news-aggregator"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-front-end"
+  routes:
+  - application_name: "front-end"
+    paths:
+    - "/*"
