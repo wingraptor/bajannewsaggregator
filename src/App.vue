@@ -18,11 +18,13 @@ export default {
 
 <style>
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-	@font-face{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-image: url("./assets/background.jpg");
+	height: 100%;
+	@font-face {
 		font-family: "DejaVuSansMono";
-		src:url("/fonts/DejaVuSansMono.ttf");
+		src: url("./assets/fonts/DejaVuSansMono.ttf");
 	}
 }
 

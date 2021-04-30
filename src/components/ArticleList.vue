@@ -11,7 +11,7 @@
 				<b-card no-body>
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
-						<img src="@/assets/cube (1).svg" alt="" height="30" class="ml-3"/>
+						<img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" />
 						{{ newsSite }}
 					</template>
 					<b-list-group flush>
@@ -37,16 +37,15 @@ export default {
 	props: {
 		articleListData: Object,
 	},
-	mounted() {
-	},
+	mounted() {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.card{
+.card {
 	border: none;
+	border-radius:50%;
 }
 
 .card-header {
@@ -54,15 +53,13 @@ export default {
 	font-size: 1.3em;
 	background-color: #1a1c20;
 	color: white;
-	/* font-family: 'Lato', sans-serif; */
 	font-family: "DejaVuSansMono", monospace;
 }
 
-.list-group-item{
+.list-group-item {
 	background-color: #1a1c20;
 	color: #b2b6b9;
-	border-bottom: 1px dotted rgba(46,46,55,0.8);
-	font-family: 'Hack', monospace;
+	border-bottom: 1px dotted rgba(46, 46, 55, 0.8);
+	font-family: "Hack", monospace;
 }
-
 </style>

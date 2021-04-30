@@ -3,7 +3,7 @@
 		<!-- As a link -->
 		<b-navbar type="dark">
 			<b-navbar-brand href="/">
-				<img src="@/assets/logo.svg" alt="" height="30" class="ml-3"/>
+				<img src="@/assets/trident.svg" alt="" height="30" class="ml-3" />
 				<span class="ml-2">News Aggregator</span>
 			</b-navbar-brand>
 		</b-navbar>
@@ -23,8 +23,9 @@ export default {
 	flex: 1;
 }
 
-nav{
+nav {
 	background-color: #141414;
-	padding:0;
+	padding: 0;
+	font-family: "DejaVuSansMono", monospace;
 }
 </style>
