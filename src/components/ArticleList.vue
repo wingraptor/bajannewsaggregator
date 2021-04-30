@@ -11,7 +11,7 @@
 				<b-card no-body>
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
-						<img src="@/assets/cube.svg" alt="" height="30" class="ml-3"/>
+						<img src="@/assets/cube (1).svg" alt="" height="30" class="ml-3"/>
 						{{ newsSite }}
 					</template>
 					<b-list-group flush>
@@ -45,11 +45,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-header {
-	font-size: 1.5rem;
-	font-family: 'Lato', sans-serif;
-}
-
 .card{
 	border: none;
 }
@@ -59,6 +54,8 @@ header {
 	font-size: 1.3em;
 	background-color: #1a1c20;
 	color: white;
+	/* font-family: 'Lato', sans-serif; */
+	font-family: "DejaVuSansMono", monospace;
 }
 
 .list-group-item{
