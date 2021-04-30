@@ -37,3 +37,9 @@ export default {
 	}
 };
 </script>
+
+<style scoped>
+	.home{
+		background-image: url("../assets/background6.jpg");
+	}
+</style>
