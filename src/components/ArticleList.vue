@@ -12,11 +12,11 @@
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
 						<img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" />
-						{{ newsSite }}
+						<a :href=" getSiteInfo(parseInt(newsSite)).URL" target="_blank" class="site-name ml-1">{{ getSiteInfo(parseInt(newsSite)).name }}</a>
 					</template>
 					<b-list-group flush>
 						<b-list-group-item
-							v-for="article in articleArray"
+							v-for="article in articleArray.slice(0, 8)"
 							:key="article.link"
 							:href="article.link"
 							target="_blank"
@@ -38,6 +38,62 @@ export default {
 		articleListData: Object,
 	},
 	mounted() {},
+	methods: {
+		getSiteInfo(siteID) {
+			let siteInfo = {
+				name: "",
+				URL: "",
+				icon: ""
+			};
+			switch (siteID) {
+				case 0:
+					siteInfo.name = "Barbados Today";
+					siteInfo.URL = "https://barbadostoday.bb/";
+					break;
+				case 1:
+					siteInfo.name = "Nation News";
+					siteInfo.URL = "http://www.nationnews.com/";
+					break;
+				case 2:
+					siteInfo.name = "Loop News";
+					siteInfo.URL = "http://www.loopnewsbarbados.com/";
+					break;
+				case 3:
+					siteInfo.name = "Barbados Advocate";
+					siteInfo.URL = "https://www.barbadosadvocate.com/";
+					break;
+				case 4:
+					siteInfo.name = "Barbados Intl Business Assoc";
+					siteInfo.URL = "http://biba.bb/";
+					break;
+				case 5:
+					siteInfo.name = "Barbados ICT";
+					siteInfo.URL = "http://barbadosict.org/";
+					break;
+				case 6:
+					siteInfo.name = "Business Barbados";
+					siteInfo.URL = "http://businessbarbados.com/";
+					break;
+				case 7:
+					siteInfo.name = "Government Info Service";
+					siteInfo.URL = "http://gisbarbados.gov.bb/gis-news/";
+					break;
+				case 8:
+					siteInfo.name = "CBC News";
+					siteInfo.URL = "https://www.cbc.bb/index.php/news/barbados-news";
+					break;
+				case 9:
+					siteInfo.name = "Barbados Reporter";
+					siteInfo.URL = "https://www.bajanreporter.com/category/new/";
+					break;
+				case 10:
+					siteInfo.name = "The Broad Street Journal";
+					siteInfo.URL = "https://www.broadstjournal.com/";
+					break;
+			}
+			return siteInfo;
+		},
+	},
 };
 </script>
 
@@ -45,7 +101,7 @@ export default {
 <style scoped>
 .card {
 	border: none;
-	border-radius:50%;
+	border-radius: 50%;
 }
 
 .card-header {
@@ -57,9 +113,14 @@ export default {
 }
 
 .list-group-item {
-	background-color: #1a1c20;
+	background-color: rgba(26, 28, 32, 0.89);
 	color: #b2b6b9;
 	border-bottom: 1px dotted rgba(46, 46, 55, 0.8);
 	font-family: "Hack", monospace;
+}
+
+.site-name{
+	text-decoration: none;
+	color: white;
 }
 </style>

@@ -9,6 +9,7 @@
 <script>
 // @ is an alias to /src
 import ArticleList from "@/components/ArticleList.vue";
+import _ from "lodash";
 
 import axios from "axios";
 
@@ -25,8 +26,9 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get("http://localhost:3000/db");
-				this.articleListData = response.data;
+				const response = await axios.get("http://150.136.63.35:1337/articles?_sort=created_at:DESC")
+				this.articleListData = _.groupBy(response.data, "siteID")
+				// console.log(_.groupBy(response.data, "siteID"))
 			} catch (error) {
 				console.log(error);
 			}

@@ -16,12 +16,14 @@ export default {
 };
 </script>
 
-<style>
+<style >
+body {
+	background-image: url("./assets/background.jpg");
+	min-height: 100vh;
+}
 #app {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-image: url("./assets/background.jpg");
-	height: 100%;
 	@font-face {
 		font-family: "DejaVuSansMono";
 		src: url("./assets/fonts/DejaVuSansMono.ttf");
