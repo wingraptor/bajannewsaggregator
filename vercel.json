@@ -1,0 +1,7 @@
+{
+  "name": "bajan-news-aggregator",
+  "version": 2,
+  "env": {
+    "MONGODB_URI": "@articles-database-uri"
+  }
+}

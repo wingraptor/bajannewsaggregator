@@ -10,6 +10,9 @@
 // @ is an alias to /src
 import ArticleList from "@/components/ArticleList.vue";
 import _ from "lodash";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 import axios from "axios";
 
@@ -26,9 +29,8 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get("http://150.136.63.35:1337/articles?_sort=created_at:DESC")
-				this.articleListData = _.groupBy(response.data, "siteID")
-				// console.log(_.groupBy(response.data, "siteID"))
+				const response = await axios.get("https://bajan-news-aggregator.vercel.app/api/articles.js")
+				this.articleListData = _.groupBy(response.data.articles, "siteID")
 			} catch (error) {
 				console.log(error);
 			}
