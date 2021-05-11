@@ -11,13 +11,15 @@
 				<b-card no-body>
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
-						<img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" />
+						<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
+						<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
 						<a
 							:href="getSiteInfo(parseInt(newsSite)).URL"
 							target="_blank"
-							class="site-name ml-1"
+							class="site-name ml-2"
 							>{{ getSiteInfo(parseInt(newsSite)).name }}</a
 						>
+						<p class="updated-time-text ml-3 mb-0">{{lastUpdated(articleArray[0].created_at)}}</p>
 					</template>
 					<b-list-group flush>
 						<b-list-group-item
@@ -98,6 +100,21 @@ export default {
 			}
 			return siteInfo;
 		},
+		lastUpdated(createdTime){
+			// created_at property is already formatted in UTC timezone
+			const createdTimeDateObject = new Date(createdTime)
+			const currentTimeDateObject = new Date()
+			// (new Date()).getTime() returns milliseconds since 01 January, 1970 UTC, and is therefore UTC formatted
+			const millisecondsSinceArticleCreated = currentTimeDateObject.getTime() - createdTimeDateObject.getTime()
+
+			if(millisecondsSinceArticleCreated > 60000 && millisecondsSinceArticleCreated < 3600000) {
+				return `last updated ${Math.round(millisecondsSinceArticleCreated / 60000)} minutes ago `
+			} else if(millisecondsSinceArticleCreated >= 3600000 && millisecondsSinceArticleCreated < 86400000  ){
+				return `last updated ${Math.round(millisecondsSinceArticleCreated / 3600000)} hours ago`
+			} else if(millisecondsSinceArticleCreated >= 86400000){
+				return `last updated ${Math.round(millisecondsSinceArticleCreated / 86400000)} days ago`
+			}
+		}
 	},
 };
 </script>
@@ -118,7 +135,10 @@ export default {
 	font-family: "DejaVuSansMono", monospace;
 	border-bottom: 1px dotted #9acd33;
 	/* border-bottom: 1px dotted rgba(100, 100, 110, 1); */
+}
 
+.updated-time-text{
+	font-size: 0.5em;
 }
 
 .list-group-item {
@@ -134,5 +154,6 @@ export default {
 .site-name {
 	text-decoration: none;
 	color: white;
+	font-size: 1.1em;
 }
 </style>

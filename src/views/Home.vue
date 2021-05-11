@@ -24,12 +24,16 @@ export default {
 	data() {
 		return {
 			articleListData: {},
+			articleListApi:{
+				dev: "http://localhost:3000/api/articles.js",
+				production: "https://bajan-news-aggregator.vercel.app/api/articles.js"
+			}
 		};
 	},
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get("https://bajan-news-aggregator.vercel.app/api/articles.js")
+				const response = await axios.get(this.articleListApi.production)
 				this.articleListData = _.groupBy(response.data.articles, "siteID")
 			} catch (error) {
 				console.log(error);

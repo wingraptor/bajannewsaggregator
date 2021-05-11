@@ -3,7 +3,8 @@
 		<!-- As a link -->
 		<b-navbar type="dark">
 			<b-navbar-brand href="/">
-				<img src="@/assets/trident.svg" alt="" height="30" class="ml-3" />
+				<!-- <img src="@/assets/trident.svg" alt="" height="28" class="ml-3" /> -->
+				<b-icon icon="diamond" font-scale="1" class="ml-3"></b-icon>
 				<span class="ml-2">News Aggregator</span>
 			</b-navbar-brand>
 		</b-navbar>
