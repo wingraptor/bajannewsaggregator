@@ -3,6 +3,6 @@
   "version": 2,
   "env": {
     "MONGODB_URI": "@articles-database-uri",
-    "X-CMC_PRO_API_KEY":"@a6953f9f-7c9e-417d-a3f1-8763da62c515"
+    "X-CMC_PRO_API_KEY":"@cmc-pro-api-key"
   }
 }
