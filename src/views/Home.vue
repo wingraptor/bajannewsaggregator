@@ -33,7 +33,7 @@ export default {
 					articleList: "http://localhost:3000/api/articles.js",
 					cryptoTickerData: "http://localhost:3000/api/cryptoTicker.js"
 				},
-				production:{
+				prod:{
 					articleList: "https://bajan-news-aggregator.vercel.app/api/articles.js",
 					cryptoTickerData: "https://bajan-news-aggregator.vercel.app/api/cryptoTicker.js"
 				}
@@ -43,7 +43,7 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.articleList);
+				const response = await axios.get(this.ApiURLs.prod.articleList);
 				this.articleListData = _.groupBy(response.data.articles, "siteID");
 			} catch (error) {
 				console.log(error);
@@ -51,7 +51,7 @@ export default {
 		},
 		async getCryptoTickerData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.cryptoTickerData);
+				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
 				this.cryptoTickerData = response.data.data
 				console.log(response.data.data)
 			} catch (error) {
