@@ -29,7 +29,7 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get("http://localhost:3000/api/articles.js")
+				const response = await axios.get("https://bajan-news-aggregator/api/articles.js")
 				this.articleListData = _.groupBy(response.data.articles, "siteID")
 			} catch (error) {
 				console.log(error);
