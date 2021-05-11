@@ -2,6 +2,7 @@
   "name": "bajan-news-aggregator",
   "version": 2,
   "env": {
-    "MONGODB_URI": "@articles-database-uri"
+    "MONGODB_URI": "@articles-database-uri",
+    "X-CMC_PRO_API_KEY":"@a6953f9f-7c9e-417d-a3f1-8763da62c515"
   }
 }
