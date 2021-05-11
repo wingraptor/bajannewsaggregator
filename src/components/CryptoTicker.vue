@@ -18,7 +18,7 @@
 export default {
 	name: "CryptoTicker",
 	props: {
-		cryptoTickerData: Object,
+		cryptoTickerData: Array,
 	},
 };
 </script>
@@ -31,7 +31,4 @@ export default {
 	font-family: "Hack", monospace;
 }
 
-.crypto-ticker-col {
-	/* border: 1px dotted #9acd33; */
-}
 </style>

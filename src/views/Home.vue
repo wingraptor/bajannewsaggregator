@@ -27,7 +27,7 @@ export default {
 	data() {
 		return {
 			articleListData: {},
-			cryptoTickerData: {},
+			cryptoTickerData: [],
 			ApiURLs :{
 				dev:{
 					articleList: "http://localhost:3000/api/articles.js",
@@ -53,7 +53,6 @@ export default {
 			try {
 				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
 				this.cryptoTickerData = response.data.data
-				console.log(response.data.data)
 			} catch (error) {
 				console.log(error);
 			}
