@@ -12,7 +12,12 @@
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 					<template v-slot:header>
 						<img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" />
-						<a :href=" getSiteInfo(parseInt(newsSite)).URL" target="_blank" class="site-name ml-1">{{ getSiteInfo(parseInt(newsSite)).name }}</a>
+						<a
+							:href="getSiteInfo(parseInt(newsSite)).URL"
+							target="_blank"
+							class="site-name ml-1"
+							>{{ getSiteInfo(parseInt(newsSite)).name }}</a
+						>
 					</template>
 					<b-list-group flush>
 						<b-list-group-item
@@ -43,7 +48,7 @@ export default {
 			let siteInfo = {
 				name: "",
 				URL: "",
-				icon: ""
+				icon: "",
 			};
 			switch (siteID) {
 				case 0:
@@ -100,8 +105,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .card {
-	border: none;
-	border-radius: 50%;
+	background-color: rgba(26, 28, 32, 0.89);
+	/* border: none; */
+	border: 1px dotted #f76d6e;
 }
 
 .card-header {
@@ -110,16 +116,22 @@ export default {
 	background-color: #1a1c20;
 	color: white;
 	font-family: "DejaVuSansMono", monospace;
+	border-bottom: 1px dotted #9acd33;
+	/* border-bottom: 1px dotted rgba(100, 100, 110, 1); */
+
 }
 
 .list-group-item {
 	background-color: rgba(26, 28, 32, 0.89);
-	color: #b2b6b9;
-	border-bottom: 1px dotted rgba(46, 46, 55, 0.8);
+	/* color: #b2b6b9; */
+	color: white;
+	border-bottom: 1px dotted rgba(61, 61, 70, 1);
+	border-bottom: 1px dotted #f76d6e;
 	font-family: "Hack", monospace;
+	font-size: 0.9em;
 }
 
-.site-name{
+.site-name {
 	text-decoration: none;
 	color: white;
 }

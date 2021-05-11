@@ -16,9 +16,10 @@ export default {
 };
 </script>
 
-<style >
+<style>
 body {
-	background-image: url("./assets/background.jpg");
+	/* background-image: url("./assets/background.jpg"); */
+	background-color: #1a1c20;
 	min-height: 100vh;
 }
 #app {
