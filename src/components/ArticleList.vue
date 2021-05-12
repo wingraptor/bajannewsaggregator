@@ -122,7 +122,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .card {
-	background-color: rgba(26, 28, 32, 0.89);
+	/* background-color: rgba(26, 28, 32, 0.89); */
+	background-color: black;
 	/* border: none; */
 	border: 1px dotted #f76d6e;
 }
@@ -130,7 +131,8 @@ export default {
 .card-header {
 	padding: 0.1em 0;
 	font-size: 1.3em;
-	background-color: #1a1c20;
+	/* background-color: #1a1c20; */
+	background-color: black;
 	color: white;
 	font-family: "DejaVuSansMono", monospace;
 	border-bottom: 1px dotted #9acd33;
@@ -142,7 +144,8 @@ export default {
 }
 
 .list-group-item {
-	background-color: rgba(26, 28, 32, 0.89);
+	/* background-color: rgba(26, 28, 32, 0.89); */
+	background-color: black;
 	/* color: #b2b6b9; */
 	color: white;
 	border-bottom: 1px dotted rgba(61, 61, 70, 1);

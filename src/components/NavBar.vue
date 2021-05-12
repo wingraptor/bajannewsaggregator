@@ -25,7 +25,8 @@ export default {
 }
 
 nav {
-	background-color: #141414;
+	/* background-color: #141414; */
+	background-color: black;
 	padding: 0;
 	font-family: "DejaVuSansMono", monospace;
 }
