@@ -14,12 +14,14 @@
 						<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
 						<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
 						<a
-							:href="getSiteInfo(parseInt(newsSite)).URL"
+							:href="siteInfo[parseInt(newsSite)].URL"
 							target="_blank"
 							class="site-name ml-2"
-							>{{ getSiteInfo(parseInt(newsSite)).name }}</a
+							>{{ siteInfo[parseInt(newsSite)].name }}</a
 						>
-						<p class="updated-time-text ml-3 mb-0">{{lastUpdated(articleArray[0].created_at)}}</p>
+						<p class="updated-time-text ml-3 mb-0">
+							{{ lastUpdated(articleArray[0].created_at) }}
+						</p>
 					</template>
 					<b-list-group flush>
 						<b-list-group-item
@@ -44,77 +46,93 @@ export default {
 	props: {
 		articleListData: Object,
 	},
-	mounted() {},
+	data() {
+		return {
+			siteInfo: {
+				0: {
+					name: "Barbados Today",
+					URL: "https://barbadostoday.bb/",
+					active: true,
+				},
+				1: {
+					name: "Nation News",
+					URL: "http://www.nationnews.com/",
+					active: true,
+				},
+				2: {
+					name: "Loop News",
+					URL: "http://www.loopnewsbarbados.com/",
+					active: true,
+				},
+				3: {
+					name: "Barbados Advocate",
+					URL: "https://www.barbadosadvocate.com/",
+					active: true,
+				},
+				4: {
+					name: "Barbados Intl Business Assoc",
+					URL: "http://biba.bb/",
+					active: true,
+				},
+				5: {
+					name: "Barbados ICT",
+					URL: "http://barbadosict.org/",
+					active: true,
+				},
+				6: {
+					name: "Business Barbados",
+					URL: "http://businessbarbados.com/",
+					active: true,
+				},
+				7: {
+					name: "Government Info Service",
+					URL: "http://gisbarbados.gov.bb/gis-news/",
+					active: true,
+				},
+				8: {
+					name: "CBC News",
+					URL: "https://www.cbc.bb/index.php/news/barbados-news",
+					active: true,
+				},
+				9: {
+					name: "Barbados Reporter",
+					URL: "https://www.bajanreporter.com/category/new/",
+					active: true,
+				},
+			},
+		};
+	},
 	methods: {
-		getSiteInfo(siteID) {
-			let siteInfo = {
-				name: "",
-				URL: "",
-				icon: "",
-			};
-			switch (siteID) {
-				case 0:
-					siteInfo.name = "Barbados Today";
-					siteInfo.URL = "https://barbadostoday.bb/";
-					break;
-				case 1:
-					siteInfo.name = "Nation News";
-					siteInfo.URL = "http://www.nationnews.com/";
-					break;
-				case 2:
-					siteInfo.name = "Loop News";
-					siteInfo.URL = "http://www.loopnewsbarbados.com/";
-					break;
-				case 3:
-					siteInfo.name = "Barbados Advocate";
-					siteInfo.URL = "https://www.barbadosadvocate.com/";
-					break;
-				case 4:
-					siteInfo.name = "Barbados Intl Business Assoc";
-					siteInfo.URL = "http://biba.bb/";
-					break;
-				case 5:
-					siteInfo.name = "Barbados ICT";
-					siteInfo.URL = "http://barbadosict.org/";
-					break;
-				case 6:
-					siteInfo.name = "Business Barbados";
-					siteInfo.URL = "http://businessbarbados.com/";
-					break;
-				case 7:
-					siteInfo.name = "Government Info Service";
-					siteInfo.URL = "http://gisbarbados.gov.bb/gis-news/";
-					break;
-				case 8:
-					siteInfo.name = "CBC News";
-					siteInfo.URL = "https://www.cbc.bb/index.php/news/barbados-news";
-					break;
-				case 9:
-					siteInfo.name = "Barbados Reporter";
-					siteInfo.URL = "https://www.bajanreporter.com/category/new/";
-					break;
-				case 10:
-					siteInfo.name = "The Broad Street Journal";
-					siteInfo.URL = "https://www.broadstjournal.com/";
-					break;
-			}
-			return siteInfo;
-		},
-		lastUpdated(createdTime){
+		lastUpdated(createdTime) {
 			// created_at property is already formatted in UTC timezone
-			const createdTimeDateObject = new Date(createdTime)
-			const currentTimeDateObject = new Date()
+			const createdTimeDateObject = new Date(createdTime);
+			const currentTimeDateObject = new Date();
 			// (new Date()).getTime() returns milliseconds since 01 January, 1970 UTC, and is therefore UTC formatted
-			const millisecondsSinceArticleCreated = currentTimeDateObject.getTime() - createdTimeDateObject.getTime()
+			const millisecondsSinceArticleCreated =
+				currentTimeDateObject.getTime() - createdTimeDateObject.getTime();
 
-			if(millisecondsSinceArticleCreated > 60000 && millisecondsSinceArticleCreated < 3600000) {
-				return `last updated ${Math.round(millisecondsSinceArticleCreated / 60000)} minutes ago `
-			} else if(millisecondsSinceArticleCreated >= 3600000 && millisecondsSinceArticleCreated < 86400000  ){
-				return `last updated ${Math.round(millisecondsSinceArticleCreated / 3600000)} hours ago`
-			} else if(millisecondsSinceArticleCreated >= 86400000){
-				return `last updated ${Math.round(millisecondsSinceArticleCreated / 86400000)} days ago`
+			if (millisecondsSinceArticleCreated < 60000) {
+				return `last updated < 1 minute ago`;
+			} else if (
+				millisecondsSinceArticleCreated > 60000 &&
+				millisecondsSinceArticleCreated < 3600000
+			) {
+				return `last updated ${Math.round(
+					millisecondsSinceArticleCreated / 60000
+				)} minutes ago`;
+			} else if (
+				millisecondsSinceArticleCreated >= 3600000 &&
+				millisecondsSinceArticleCreated < 86400000
+			) {
+				return `last updated ${Math.round(
+					millisecondsSinceArticleCreated / 3600000
+				)} hours ago`;
+			} else if (millisecondsSinceArticleCreated >= 86400000) {
+				return `last updated ${Math.round(
+					millisecondsSinceArticleCreated / 86400000
+				)} days ago`;
 			}
-		}
+		},
 	},
 };
 </script>
@@ -139,7 +157,7 @@ export default {
 	/* border-bottom: 1px dotted rgba(100, 100, 110, 1); */
 }
 
-.updated-time-text{
+.updated-time-text {
 	font-size: 0.5em;
 }
 
