@@ -47,7 +47,7 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.articleList);
+				const response = await axios.get(this.ApiURLs.prod.articleList);
 				this.articleListData = _.groupBy(response.data.articles, "siteID");
 				this.isLoaded = true;
 			} catch (error) {
@@ -56,7 +56,7 @@ export default {
 		},
 		async getCryptoTickerData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.cryptoTickerData);
+				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
 				this.cryptoTickerData = response.data.data;
 			} catch (error) {
 				console.log(error);
