@@ -113,23 +113,23 @@ export default {
 				currentTimeDateObject.getTime() - createdTimeDateObject.getTime();
 
 			if (millisecondsSinceArticleCreated < 60000) {
-				return `last updated < 1 minute ago`;
+				return `last refreshed < 1 minute ago`;
 			} else if (
 				millisecondsSinceArticleCreated > 60000 &&
 				millisecondsSinceArticleCreated < 3600000
 			) {
-				return `last updated ${Math.round(
+				return `last refreshed ${Math.round(
 					millisecondsSinceArticleCreated / 60000
 				)} minutes ago`;
 			} else if (
 				millisecondsSinceArticleCreated >= 3600000 &&
 				millisecondsSinceArticleCreated < 86400000
 			) {
-				return `last updated ${Math.round(
+				return `last refreshed ${Math.round(
 					millisecondsSinceArticleCreated / 3600000
 				)} hours ago`;
 			} else if (millisecondsSinceArticleCreated >= 86400000) {
-				return `last updated ${Math.round(
+				return `last refreshed ${Math.round(
 					millisecondsSinceArticleCreated / 86400000
 				)} days ago`;
 			}
