@@ -2,7 +2,9 @@
 	<div class="home mb-4">
 		<div>
 			<CryptoTicker :cryptoTickerData="cryptoTickerData" />
-			<ArticleList :articleListData="articleListData" />
+			<template v-if="isLoaded">
+				<ArticleList :articleListData="articleListData" />
+			</template>
 		</div>
 	</div>
 </template>
@@ -28,31 +30,34 @@ export default {
 		return {
 			articleListData: {},
 			cryptoTickerData: [],
-			ApiURLs :{
-				dev:{
+			ApiURLs: {
+				dev: {
 					articleList: "http://localhost:3000/api/articles.js",
-					cryptoTickerData: "http://localhost:3000/api/cryptoTicker.js"
+					cryptoTickerData: "http://localhost:3000/api/cryptoTicker.js",
 				},
-				prod:{
+				prod: {
 					articleList: "https://bajan-news-aggregator.vercel.app/api/articles.js",
-					cryptoTickerData: "https://bajan-news-aggregator.vercel.app/api/cryptoTicker.js"
-				}
-			}
+					cryptoTickerData:
+						"https://bajan-news-aggregator.vercel.app/api/cryptoTicker.js",
+				},
+			},
+			isLoaded: false,
 		};
 	},
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get(this.ApiURLs.prod.articleList);
+				const response = await axios.get(this.ApiURLs.dev.articleList);
 				this.articleListData = _.groupBy(response.data.articles, "siteID");
+				this.isLoaded = true;
 			} catch (error) {
 				console.log(error);
 			}
 		},
 		async getCryptoTickerData() {
 			try {
-				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
-				this.cryptoTickerData = response.data.data
+				const response = await axios.get(this.ApiURLs.dev.cryptoTickerData);
+				this.cryptoTickerData = response.data.data;
 			} catch (error) {
 				console.log(error);
 			}
@@ -66,5 +71,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

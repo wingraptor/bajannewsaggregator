@@ -5,8 +5,8 @@
 				cols="12"
 				md="4"
 				class="my-3"
-				v-for="(articleArray, newsSite) in articleListData"
-				:key="newsSite"
+				v-for="(articleArray, newsSiteId) in activeNewsSites"
+				:key="newsSiteId"
 			>
 				<b-card no-body>
 					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
@@ -14,10 +14,10 @@
 						<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
 						<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
 						<a
-							:href="siteInfo[parseInt(newsSite)].URL"
+							:href="siteInfo[parseInt(newsSiteId)].URL"
 							target="_blank"
 							class="site-name ml-2"
-							>{{ siteInfo[parseInt(newsSite)].name }}</a
+							>{{ siteInfo[parseInt(newsSiteId)].name }}</a
 						>
 						<p class="updated-time-text ml-3 mb-0">
 							{{ lastUpdated(articleArray[0].created_at) }}
@@ -57,7 +57,7 @@ export default {
 				1: {
 					name: "Nation News",
 					URL: "http://www.nationnews.com/",
-					active: true,
+					active: false,
 				},
 				2: {
 					name: "Loop News",
@@ -100,6 +100,7 @@ export default {
 					active: true,
 				},
 			},
+			activeNewsSites:{}
 		};
 	},
 	methods: {
@@ -133,6 +134,18 @@ export default {
 				)} days ago`;
 			}
 		},
+		// Filter articles returned from DB
+		filterArticleList(obj){
+			for (const id in obj ){
+				// Filter articles according to which  Site is set to active and are to be displayed on website
+				if (this.siteInfo[id].active){
+					this.activeNewsSites[id] = obj[id]
+				} 
+			}
+		}
+	},
+	created(){
+		this.filterArticleList(this.articleListData);
 	},
 };
 </script>
