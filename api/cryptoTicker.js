@@ -6,7 +6,7 @@ const cryptoTickerQueryConfig = {
     "X-CMC_PRO_API_KEY": process.env.X_CMC_PRO_API_KEY,
   },
   params: {
-    limit: 3,
+    limit: 1,
   },
 };
 

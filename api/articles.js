@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
   // using the connection string environment variable as the argument
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
-  // Select the "users" collection from the database
+  // Select the "articles" collection from the database
   const collection = await db.collection("articles");
 
   // Select the users collection from the database
