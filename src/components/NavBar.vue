@@ -5,7 +5,8 @@
 			<b-navbar-brand href="/">
 				<!-- <img src="@/assets/trident.svg" alt="" height="28" class="ml-3" /> -->
 				<b-icon icon="diamond" font-scale="1" class="ml-3"></b-icon>
-				<span class="ml-2">News Aggregator</span>
+				<!-- <span class="ml-2">News Aggregator</span> -->
+				<vue-typer text='News Aggregator' :repeat='0' class="ml-2"></vue-typer>
 			</b-navbar-brand>
 			<CryptoTicker />
 		</b-navbar>
@@ -26,10 +27,19 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .list-group-item {
 	flex: 1;
 }
+
+.vue-typer .custom.char.typed {
+  color: white;
+}
+
+.bi-diamond{
+	color: gold;
+}
+
 
 nav {
 	/* background-color: #141414; */

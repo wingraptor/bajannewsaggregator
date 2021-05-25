@@ -185,6 +185,10 @@ export default {
 	font-size: 0.9em;
 }
 
+.bi-hexagon{
+	color: gold;
+}
+
 .site-name {
 	text-decoration: none;
 	color: white;

@@ -24,7 +24,7 @@ export default {
 <style scoped>
 
 a{
-  color:#f76d6e;
+  color: gold;
 }
 
 
