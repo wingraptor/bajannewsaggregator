@@ -41,7 +41,7 @@ export default {
 }
 
 
-nav {
+.navbar-expand {
 	/* background-color: #141414; */
 	background-color: black;
 	padding: 0;
