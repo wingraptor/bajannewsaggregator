@@ -4,14 +4,17 @@
 			<NavBar />
 		</div>
 		<router-view />
+		<Footer />
 	</div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue"
 export default {
 	components: {
 		NavBar,
+		Footer
 	},
 };
 </script>
@@ -21,6 +24,8 @@ body {
 	/* background-image: url("./assets/background.jpg"); */
 	background-color: #1a1c20;
 	min-height: 100vh;
+	position: absolute;
+	color: white;
 }
 #app {
 	-webkit-font-smoothing: antialiased;
