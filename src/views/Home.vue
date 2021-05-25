@@ -38,7 +38,7 @@ export default {
 	methods: {
 		async getArticleData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.articleList);
+				const response = await axios.get(this.ApiURLs.prod.articleList);
 				this.articleListData = _.groupBy(response.data.articles, "siteID");
 				this.isLoaded = true;
 			} catch (error) {
