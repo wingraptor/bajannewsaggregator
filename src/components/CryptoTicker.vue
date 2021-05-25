@@ -9,7 +9,7 @@
 			<!-- <span> {{ crypto.symbol }}/USD</span> -->
 			<span
 				:style="
-					crypto.quote.USD.percent_change_24h > 0
+					crypto.quote.USD.percent_change_1h > 0
 						? 'color:rgba(154, 205, 51, 0.9)'
 						: 'color:rgba(247, 109, 110, 0.9)'
 				"
