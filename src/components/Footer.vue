@@ -1,8 +1,17 @@
 <template>
 	<div class="footer-div ml-3">
-    <footer>
-      <span>Made with <b-icon icon="heart" font-scale="1.1" animation="throb"></b-icon> by <a href="https://akonobrathwaite.com/" target="_blank" rel="noopener noreferrer">Akono</a></span>
-    </footer>
+		<footer v-show="isActive">
+			<span
+				>Made with
+				<b-icon icon="heart" font-scale="1.1" animation="throb"></b-icon> by
+				<a
+					href="https://akonobrathwaite.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Akono</a
+				></span
+			>
+		</footer>
 		<!-- As a link
 		<b-navbar type="dark">
 			<b-navbar-brand href="/">
@@ -14,35 +23,39 @@
 
 
 <script>
-
 export default {
 	name: "Footer",
+  data(){
+    return {
+      isActive: false
+    }
+  },
+	mounted() {
+		this.$root.$on("textComplete", () => {
+			this.isActive = true;
+		});
+	},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-a{
-  color: gold;
+a {
+	color: gold;
 }
 
-
-a:hover{
-  color:#9acd33;
-  text-decoration: none;
+a:hover {
+	color: #9acd33;
+	text-decoration: none;
 }
 
 .footer-div {
-  color: white;
-  position: absolute;
-  bottom: 3px;
+	color: white;
+	position: absolute;
+	bottom: 3px;
 }
 
-.bi-heart{
-  color:#f76d6e;
+.bi-heart {
+	color: #f76d6e;
 }
-
-
-
 </style>

@@ -6,9 +6,9 @@
 				<!-- <img src="@/assets/trident.svg" alt="" height="28" class="ml-3" /> -->
 				<b-icon icon="diamond" font-scale="1" class="ml-3"></b-icon>
 				<!-- <span class="ml-2">News Aggregator</span> -->
-				<vue-typer text='News Aggregator' :repeat='0' class="ml-2"></vue-typer>
+				<vue-typer :text='["...", "News Aggregator"]' :repeat='0' @completed='onComplete' class="ml-2"></vue-typer>
 			</b-navbar-brand>
-			<CryptoTicker />
+			<CryptoTicker :isActive="isActive"/>
 		</b-navbar>
 	</div>
 </template>
@@ -21,6 +21,17 @@ export default {
 	name: "NavBar",
 	components:{
 		CryptoTicker
+	},
+	data (){
+		return {
+			isActive: false
+		}
+	},
+	methods:{
+		onComplete(){
+			this.isActive = true;
+			this.$root.$emit('textComplete')
+		}
 	}
 
 };

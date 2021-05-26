@@ -1,41 +1,43 @@
 <template>
 	<div class="main-content">
-		<b-row class="m-1">
-			<b-col
-				cols="12"
-				md="4"
-				class="my-3"
-				v-for="(articleArray, newsSiteId) in activeNewsSites"
-				:key="newsSiteId"
-			>
-				<b-card no-body>
-					<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
-					<template v-slot:header>
-						<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
-						<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
-						<a
-							:href="siteInfo[parseInt(newsSiteId)].URL"
-							target="_blank"
-							class="site-name ml-2"
-							>{{ siteInfo[parseInt(newsSiteId)].name }}</a
-						>
-						<p class="updated-time-text ml-3 mb-0">
-							{{ lastUpdated(articleArray[0].created_at) }}
-						</p>
-					</template>
-					<b-list-group flush>
-						<b-list-group-item
-							v-for="article in articleArray.slice(0, 8)"
-							:key="article.link"
-							:href="article.link"
-							target="_blank"
-							class="p-2"
-							>{{ article.headline }}
-						</b-list-group-item>
-					</b-list-group>
-				</b-card>
-			</b-col>
-		</b-row>
+		<transition name="fade">
+			<b-row v-show="isActive" class="m-1">
+				<b-col
+					cols="12"
+					md="4"
+					class="my-3"
+					v-for="(articleArray, newsSiteId) in activeNewsSites"
+					:key="newsSiteId"
+				>
+					<b-card no-body>
+						<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
+						<template v-slot:header>
+							<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
+							<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
+							<a
+								:href="siteInfo[parseInt(newsSiteId)].URL"
+								target="_blank"
+								class="site-name ml-2"
+								>{{ siteInfo[parseInt(newsSiteId)].name }}</a
+							>
+							<p class="updated-time-text ml-3 mb-0">
+								{{ lastUpdated(articleArray[0].created_at) }}
+							</p>
+						</template>
+						<b-list-group flush>
+							<b-list-group-item
+								v-for="article in articleArray.slice(0, 8)"
+								:key="article.link"
+								:href="article.link"
+								target="_blank"
+								class="p-2"
+								>{{ article.headline }}
+							</b-list-group-item>
+						</b-list-group>
+					</b-card>
+				</b-col>
+			</b-row>
+		</transition>
 	</div>
 </template>
 
@@ -100,7 +102,8 @@ export default {
 					active: true,
 				},
 			},
-			activeNewsSites:{}
+			activeNewsSites: {},
+			isActive: false,
 		};
 	},
 	methods: {
@@ -135,23 +138,35 @@ export default {
 			}
 		},
 		// Filter articles returned from DB
-		filterArticleList(obj){
-			for (const id in obj ){
+		filterArticleList(obj) {
+			for (const id in obj) {
 				// Filter articles according to which  Site is set to active and are to be displayed on website
-				if (this.siteInfo[id].active){
-					this.activeNewsSites[id] = obj[id]
-				} 
+				if (this.siteInfo[id].active) {
+					this.activeNewsSites[id] = obj[id];
+				}
 			}
-		}
+		},
 	},
-	created(){
+	created() {
 		this.filterArticleList(this.articleListData);
+	},
+	mounted() {
+		this.$root.$on("textComplete", () => {
+			this.isActive = true;
+		});
 	},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .card {
 	/* background-color: rgba(26, 28, 32, 0.89); */
 	background-color: black;
@@ -185,7 +200,7 @@ export default {
 	font-size: 0.9em;
 }
 
-.bi-hexagon{
+.bi-hexagon {
 	color: gold;
 }
 
