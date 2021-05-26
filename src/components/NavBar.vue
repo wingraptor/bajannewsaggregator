@@ -6,34 +6,38 @@
 				<!-- <img src="@/assets/trident.svg" alt="" height="28" class="ml-3" /> -->
 				<b-icon icon="diamond" font-scale="1" class="ml-3"></b-icon>
 				<!-- <span class="ml-2">News Aggregator</span> -->
-				<vue-typer :text='["...", "News Aggregator"]' :repeat='0' @completed='onComplete' class="ml-2"></vue-typer>
+				<vue-typer
+					:text="['> __', 'News Aggregator']"
+					:repeat="0"
+					@completed="onComplete"
+					class="ml-2"
+				></vue-typer>
 			</b-navbar-brand>
-			<CryptoTicker :isActive="isActive"/>
+			<CryptoTicker :isActive="isActive" />
 		</b-navbar>
 	</div>
 </template>
 
 
 <script>
-import CryptoTicker from "@/components/CryptoTicker.vue"
+import CryptoTicker from "@/components/CryptoTicker.vue";
 
 export default {
 	name: "NavBar",
-	components:{
-		CryptoTicker
+	components: {
+		CryptoTicker,
 	},
-	data (){
+	data() {
 		return {
-			isActive: false
-		}
+			isActive: false,
+		};
 	},
-	methods:{
-		onComplete(){
+	methods: {
+		onComplete() {
 			this.isActive = true;
-			this.$root.$emit('textComplete')
-		}
-	}
-
+			this.$root.$emit("textComplete");
+		},
+	},
 };
 </script>
 
@@ -44,13 +48,21 @@ export default {
 }
 
 .vue-typer .custom.char.typed {
-  color: white;
+	color: white;
 }
 
-.bi-diamond{
+.vue-typer .custom.char.selected {
+	background-color: gold;
+}
+
+.vue-typer .custom.caret {
+	background-color: gold;
+	width: 8px;
+}
+
+.bi-diamond {
 	color: gold;
 }
-
 
 .navbar-expand {
 	/* background-color: #141414; */
