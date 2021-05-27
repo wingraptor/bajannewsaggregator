@@ -31,7 +31,8 @@
 								:href="article.link"
 								target="_blank"
 								class="p-2"
-								>{{ article.headline }}
+							>
+								{{ article.headline }}
 							</b-list-group-item>
 						</b-list-group>
 					</b-card>
@@ -160,11 +161,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+	opacity: 0;
 }
 
 .card {
@@ -182,7 +184,6 @@ export default {
 	color: white;
 	font-family: "DejaVuSansMono", monospace;
 	border-bottom: 1px dotted #9acd33;
-	/* border-bottom: 1px dotted rgba(100, 100, 110, 1); */
 }
 
 .updated-time-text {
@@ -190,14 +191,23 @@ export default {
 }
 
 .list-group-item {
-	/* background-color: rgba(26, 28, 32, 0.89); */
+	/* background-image: url("https://media.giphy.com/media/VHrHBwIpXqqpetwq2F/giphy.gif"); */
+	background-image: url("https://media.giphy.com/media/VHrHBwIpXqqpetwq2F/giphy.gif");
 	background-color: black;
-	/* color: #b2b6b9; */
 	color: white;
-	border-bottom: 1px dotted rgba(61, 61, 70, 1);
 	border-bottom: 1px dotted #f76d6e;
 	font-family: "Hack", monospace;
 	font-size: 0.9em;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+	background-color: gold;
+	color: black;
+}
+
+.list-group-item-action:visited {
+	color: grey; 
 }
 
 .bi-hexagon {

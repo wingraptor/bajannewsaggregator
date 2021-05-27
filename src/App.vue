@@ -26,6 +26,7 @@ body {
 	min-height: 100vh;
 	position: absolute;
 	color: white;
+	font-family: "Hack", monospace;
 }
 #app {
 	-webkit-font-smoothing: antialiased;
