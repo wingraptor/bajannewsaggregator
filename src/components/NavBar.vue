@@ -7,7 +7,7 @@
 				<b-icon icon="diamond" font-scale="1" class="ml-3"></b-icon>
 				<!-- <span class="ml-2">News Aggregator</span> -->
 				<vue-typer
-					:text="['> __', 'News Aggregator']"
+					:text="['>__', 'News Aggregator']"
 					:repeat="0"
 					@completed="onComplete"
 					class="ml-2"
@@ -43,6 +43,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.b-icon{
+	color: gold;
+}
+
 .list-group-item {
 	flex: 1;
 }
@@ -58,10 +62,6 @@ export default {
 .vue-typer .custom.caret {
 	background-color: gold;
 	width: 8px;
-}
-
-.bi-diamond {
-	color: gold;
 }
 
 .navbar-expand {

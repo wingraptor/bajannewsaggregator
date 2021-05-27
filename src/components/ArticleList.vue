@@ -13,7 +13,7 @@
 						<!-- https://stackoverflow.com/questions/45834730/how-to-place-an-icon-next-to-tab-title-bootstrap-vue -->
 						<template v-slot:header>
 							<!-- <img src="@/assets/arrow.svg" alt="" height="30" class="ml-3" /> -->
-							<b-icon icon="hexagon" font-scale="1" class="ml-3"></b-icon>
+							<b-icon icon="hexagon" font-scale="1.1" class="ml-2"></b-icon>
 							<a
 								:href="siteInfo[parseInt(newsSiteId)].URL"
 								target="_blank"
@@ -202,7 +202,7 @@ export default {
 
 .list-group-item-action:hover,
 .list-group-item-action:focus {
-	background-color: gold;
+	background-color: rgba(255, 215, 0, 0.9);
 	color: black;
 }
 
@@ -210,7 +210,7 @@ export default {
 	color: grey; 
 }
 
-.bi-hexagon {
+.b-icon {
 	color: gold;
 }
 
