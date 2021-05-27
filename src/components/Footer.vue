@@ -1,9 +1,10 @@
 <template>
 	<div class="footer-div ml-3">
 		<footer v-show="isActive">
-			<span
+			<span class="d-flex align-content-center"
 				>Made with
-				<b-icon icon="heart" font-scale="1.1" animation="throb"></b-icon> by
+				<!-- <b-icon icon="heart" font-scale="1.1" animation="throb"></b-icon> by -->
+				<img src="https://media.giphy.com/media/kEcZjhjFJ5XqFJXgtP/giphy.gif" height="25px" class="mx-1"> by&nbsp;
 				<a
 					href="https://akonobrathwaite.com/"
 					target="_blank"
@@ -53,6 +54,7 @@ a:hover {
 	color: white;
 	position: absolute;
 	bottom: 3px;
+	font-family: "Hack", monospace;
 }
 
 .bi-heart {
