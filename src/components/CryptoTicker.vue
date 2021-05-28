@@ -57,6 +57,8 @@ export default {
 			try {
 				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
 				this.cryptoTickerData = response.data.data;
+				// Start cryptoticker
+				this.incrementCryptoIndex();
 			} catch (error) {
 				console.log(error);
 			}
@@ -78,7 +80,6 @@ export default {
 		this.$root.$on("textComplete", () => {
 			this.isActive = true;
 			this.getCryptoTickerData();
-			this.incrementCryptoIndex();
 		});
 	},
 	// watch: {
