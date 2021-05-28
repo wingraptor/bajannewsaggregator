@@ -55,22 +55,23 @@ export default {
 	methods: {
 		async getCryptoTickerData() {
 			try {
-				const response = await axios.get(this.ApiURLs.dev.cryptoTickerData);
+				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
 				this.cryptoTickerData = response.data.data;
 			} catch (error) {
 				console.log(error);
 			}
 		},
 		incrementCryptoIndex() {
-
-			setTimeout(			setInterval(() => {
-				if (this.cryptoIndex >= this.cryptoTickerData.length - 1) {
-					this.cryptoIndex = 0;
-				} else {
-					this.cryptoIndex += 1;
-				}
-			}, 2000), 1000)
-
+			setTimeout(
+				setInterval(() => {
+					if (this.cryptoIndex >= this.cryptoTickerData.length - 1) {
+						this.cryptoIndex = 0;
+					} else {
+						this.cryptoIndex += 1;
+					}
+				}, 2000),
+				2000
+			);
 		},
 	},
 	mounted() {
