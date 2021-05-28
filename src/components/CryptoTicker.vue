@@ -2,32 +2,28 @@
 	<div class="crypto-ticker-div">
 		<transition name="transition">
 			<div
-				v-for="crypto in cryptoTickerData"
-				:key="crypto.id"
 				class="crypto-ticker-col pr-2"
 				v-show="isActive"
+				v-bind:title="
+					cryptoTickerData[cryptoIndex].name +
+					'/USD' +
+					': ' +
+					cryptoTickerData[cryptoIndex].quote.USD.percent_change_24h.toFixed(0) +
+					'% in the last 24hr.'
+				"
 			>
-				<img src="@/assets/bitcoin-sign.svg" alt="" height="15" />:
-				<!-- <span> {{ crypto.symbol }}/USD</span> -->
+				<!-- <img src="@/assets/bitcoin-sign.svg" alt="" height="15" />: -->
+				<cryptoicon :symbol="cryptoTickerData[cryptoIndex].symbol" size="24" />
+				&nbsp;
 				<span
 					:style="
-						crypto.quote.USD.percent_change_1h > 0
+						cryptoTickerData[cryptoIndex].quote.USD.percent_change_24h > 0
 							? 'color:rgba(154, 205, 51, 0.9)'
 							: 'color:rgba(247, 109, 110, 0.9)'
 					"
-					v-bind:title="crypto.name + '/USD' + ': '+ crypto.quote.USD.percent_change_1h.toFixed(0) + '% in the last 1hr.'"
 				>
-					${{ crypto.quote.USD.price.toFixed(0) }}</span
+					${{ cryptoTickerData[cryptoIndex].quote.USD.price.toFixed(2) }}</span
 				>
-				<!-- <span class="percent-change-data">
-					<span v-if="crypto.quote.USD.percent_change_24h > 0"
-						><b-icon-arrow-up style="color: #9acd33"></b-icon-arrow-up
-					></span>
-					<span v-else
-						><b-icon-arrow-down style="color: #f76d6e"></b-icon-arrow-down
-					></span>
-					<span> {{ crypto.quote.USD.percent_change_24h.toFixed(2) }}% 24h </span>
-				</span> -->
 			</div>
 		</transition>
 	</div>
@@ -53,23 +49,36 @@ export default {
 			},
 			cryptoTickerData: [],
 			isActive: false,
+			cryptoIndex: 0,
 		};
 	},
 	methods: {
 		async getCryptoTickerData() {
 			try {
-				const response = await axios.get(this.ApiURLs.prod.cryptoTickerData);
+				const response = await axios.get(this.ApiURLs.dev.cryptoTickerData);
 				this.cryptoTickerData = response.data.data;
 			} catch (error) {
 				console.log(error);
 			}
 		},
+		incrementCryptoIndex() {
+
+			setTimeout(			setInterval(() => {
+				if (this.cryptoIndex >= this.cryptoTickerData.length - 1) {
+					this.cryptoIndex = 0;
+				} else {
+					this.cryptoIndex += 1;
+				}
+			}, 2000), 1000)
+
+		},
 	},
 	mounted() {
 		this.$root.$on("textComplete", () => {
 			this.isActive = true;
+			this.getCryptoTickerData();
+			this.incrementCryptoIndex();
 		});
-		this.getCryptoTickerData();
 	},
 	// watch: {
 	// 	isActive() {
