@@ -70,5 +70,6 @@ export default {
 	padding: 0;
 	font-family: "DejaVuSansMono", monospace;
 	justify-content: space-between;
+	border-bottom: 1px dotted gold;
 }
 </style>
